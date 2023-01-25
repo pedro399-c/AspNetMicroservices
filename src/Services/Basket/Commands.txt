@@ -1,0 +1,13 @@
+docker pull redis
+docker run -d -p 6379:6379 --name aspnetrun-redis redis
+docker exec -it aspnetrun-redis /bin/bash
+redis-cli
+ping
+
+docker rm -vf $(docker ps -aq)
+To delete all the images,
+
+docker rmi -f $(docker images -aq)
+
+docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
+ docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down

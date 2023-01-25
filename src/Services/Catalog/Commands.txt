@@ -30,4 +30,11 @@ db.Products.insertMany([
  db.Products.remove({})
  
  docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
- docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down -d
+ docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down
+ 
+ To delete all containers including its volumes use,
+
+docker rm -vf $(docker ps -aq)
+To delete all the images,
+
+docker rmi -f $(docker images -aq)
