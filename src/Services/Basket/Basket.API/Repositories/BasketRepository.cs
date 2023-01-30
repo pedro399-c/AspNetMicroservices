@@ -1,5 +1,6 @@
 ﻿using Basket.API.Entities;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Newtonsoft.Json;
 
 namespace Basket.API.Repositories
@@ -13,9 +14,9 @@ namespace Basket.API.Repositories
             this._cache = cache ?? throw new ArgumentNullException(nameof(cache));
         }
 
-        public Task DeleteBasket(string username)
+        public async Task DeleteBasket(string username)
         {
-            throw new NotImplementedException();
+            await _cache.RemoveAsync(username);
         }
 
         public async Task<ShoppingCart> GetBasket(string username)
