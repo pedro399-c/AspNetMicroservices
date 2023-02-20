@@ -1,6 +1,8 @@
+using Common.Logging;
 using Discount.Grpc.Extensions;
 using Discount.Grpc.Repositories;
 using Discount.Grpc.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,10 @@ builder.Services.AddGrpc();
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+
+builder
+    .Host
+    .UseSerilog(Serilogger.Configure);
 
 var app = builder.Build();
 
