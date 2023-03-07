@@ -1,6 +1,7 @@
 using Catalog.API.Data;
 using Catalog.API.Repositories;
 using Common.Logging;
+using HealthChecks.UI.Client;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ICatalogContext, CatalogContext>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services
+    .AddHealthChecks()
+    .AddMongoDb(builder.Configuration["DatabaseSettings:ConnectionString"], "Catalog MongoDb Health", Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded);
 
 builder
     .Host
@@ -31,5 +36,11 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/hc", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.Run();

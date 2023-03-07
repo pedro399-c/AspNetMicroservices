@@ -1,5 +1,6 @@
 using AspnetRunBasics.Services;
 using Common.Logging;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +34,10 @@ namespace AspnetRunBasics
                 c.BaseAddress = new Uri(Configuration["ApiSettings:GatewayAddress"]))
                 .AddHttpMessageHandler<LoggingDelegatingHandler>();
 
+            services
+                .AddHealthChecks()
+                .AddUrlGroup(new Uri($"{Configuration["ApiSettings:GatewayAddress"]}"), "Ocelot API Gw", Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded);
+
             services.AddRazorPages();
         }
 
@@ -60,6 +65,11 @@ namespace AspnetRunBasics
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHealthChecks("/hc", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
             });
         }
     }

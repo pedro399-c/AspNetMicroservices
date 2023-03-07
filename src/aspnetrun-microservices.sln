@@ -45,7 +45,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{9E46
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspnetRunBasics", "WebApps\AspnetRunBasics\AspnetRunBasics.csproj", "{F6BBBA2C-4EDC-47CC-8B89-5611ACF190B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "BuildingBlocks\Common.Logging\Common.Logging.csproj", "{892CB856-D19F-499A-A12C-C4FC218347E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Logging", "BuildingBlocks\Common.Logging\Common.Logging.csproj", "{892CB856-D19F-499A-A12C-C4FC218347E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStatus", "WebApps\WebStatus\WebStatus.csproj", "{9586B16E-D34A-4735-AFAB-03DA811CA8E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +111,10 @@ Global
 		{892CB856-D19F-499A-A12C-C4FC218347E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{892CB856-D19F-499A-A12C-C4FC218347E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{892CB856-D19F-499A-A12C-C4FC218347E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9586B16E-D34A-4735-AFAB-03DA811CA8E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9586B16E-D34A-4735-AFAB-03DA811CA8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9586B16E-D34A-4735-AFAB-03DA811CA8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9586B16E-D34A-4735-AFAB-03DA811CA8E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +137,7 @@ Global
 		{D9DB024E-A3C2-4581-8AA5-4775D01A2734} = {C16AB2C2-6D28-4FDD-96BE-64535A822FE2}
 		{F6BBBA2C-4EDC-47CC-8B89-5611ACF190B3} = {9E46FE16-DB93-4FD1-8563-72595CCDA241}
 		{892CB856-D19F-499A-A12C-C4FC218347E8} = {D2783111-BCC3-4559-B1C4-46B5783163FB}
+		{9586B16E-D34A-4735-AFAB-03DA811CA8E1} = {9E46FE16-DB93-4FD1-8563-72595CCDA241}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {481D3C33-1BD4-4454-98D5-70E11D868394}
